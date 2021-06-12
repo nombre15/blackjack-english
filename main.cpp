@@ -10,6 +10,8 @@ int main()
 {
 
     SetConsoleTitle("Blackjack");
+
+    repetir:
     int sum = 0;
     int dealerSum = 0;
     int key;
@@ -25,12 +27,11 @@ int main()
 
     srand(time(0));
     int number = rand() % 11;
+    int dealerNumber = rand() % 11;
     int random = rand() % 4;
     int dealerRandom = rand() % 4;
-    int dealerNumber = 0;
-
-    dealerSum = dealerSum + dealerNumber;
     sum = sum + number;
+    dealerSum = dealerSum + dealerNumber;
 
     //results
     if(sum == 21) {
@@ -42,7 +43,8 @@ int main()
 
         if(key == 'e'){
 
-            goto blackjack;
+            cout << "You have "  << money << "$\n" << endl;
+            goto repetir;
         }
 
         else if(key == 'x'){
@@ -55,13 +57,53 @@ int main()
      if(sum > 21){
 
         sum = 0;
-        _cputs("You have over 21, loser!\n\nPress E to play again or X to leave\n\n");
+        _cputs("You have over 21 points, loser!\n\nPress E to play again or X to leave\n\n");
 
         key = getch();
 
         if(key == 'e'){
 
-            goto blackjack;
+            goto repetir;
+        }
+
+        else if(key == 'x'){
+
+            money = 0;
+            cout << "\nYou lose it all! \nNow you have " << money << "$" << endl;
+            return 0;
+        }
+     }
+
+     if(dealerSum == 21) {
+
+        money = 0;
+        cout << "\nYou lose it all! \nNow you have " << money << "$" << endl;
+        _cputs("Dealer has 21 points, dealer wins!\nPress E to play again or X to leave\n\n");
+
+        key = getch();
+
+        if(key == 'e'){
+
+            goto repetir;
+        }
+
+        else if(key == 'x'){
+
+            cout << "You have "  << money << "$" << endl;
+            return 0;
+        }
+     }
+
+     if(dealerSum > 21){
+
+        sum = 0;
+        _cputs("Winner!, dealer has over 21 points\n\nPress E to play again or X to leave\n\n");
+
+        key = getch();
+
+        if(key == 'e'){
+
+            goto repetir;
         }
 
         else if(key == 'x'){
@@ -75,14 +117,46 @@ int main()
     //Zero for using characters
     if(number == 0){
 
-      cout << "You got " << character[random] << simbol[random];
-      cout << "  ------------  " << "Dealer got " << character[dealerRandom] << simbol[dealerRandom];
+      cout << character[random] << simbol[random];
 
        sum = sum + 10;
+
+       cout << " You: got" << sum << " points";
+    }
+
+    //1 means try again
+    if (number == 1) {
+
+       goto blackjack;
+     }
+
+    if (dealerNumber == 1) {
+
+       goto blackjack;
+     }
+
+     //regular numbers
+     if(1 < number && number <= 10){
+
+     cout << "You: "<<number << simbol[random];
+     cout << " - " << sum << " points";
+     }
+
+     if(1 < dealerNumber && dealerNumber <= 10){
+
+     cout << "\nDealer: "<< dealerNumber << simbol[random];
+     cout << " - " << dealerSum << " points";
+     }
+
+     if(dealerNumber == 0){
+
+      cout << "\nDealer: " << character[dealerRandom] << simbol[dealerRandom];
+
        dealerSum = dealerSum + 10;
 
-       cout << "\nYou got " << sum << " points";
-       cout << "  ------------  " << " Dealer got " << dealerSum << " points" << endl;
+       cout << " - " << dealerSum << " points" << endl;
+     }
+
        _cputs("\nPress E to grab another card or X to leave\n\n");
 
         key = getch();
@@ -97,31 +171,3 @@ int main()
             cout << "Now you have " << money << "$" << endl;
         }
     }
-
-    //1 means try again
-    else if (number == 1) {
-
-       goto blackjack;
-     }
-
-     //regular numbers
-     else{
-
-     cout << number << simbol[random] << endl;
-     cout << "You got " << sum << " points" << endl;
-     _cputs("\nPress E to grab another card or X to leave\n\n");
-
-        key = getch();
-
-        if(key == 'e'){
-
-            money = money + (money * 0.5);
-            goto blackjack;
-        }
-
-        if(key == 'x'){
-
-            cout << "You have " << money << "$" << endl;
-        }
-    }
-}
