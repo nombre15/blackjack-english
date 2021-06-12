@@ -11,6 +11,7 @@ int main()
 
     SetConsoleTitle("Blackjack");
     int sum = 0;
+    int dealerSum = 0;
     int key;
     int money;
     string character[4] {"A", "J", "Q", "K"};
@@ -25,6 +26,10 @@ int main()
     srand(time(0));
     int number = rand() % 11;
     int random = rand() % 4;
+    int dealerRandom = rand() % 4;
+    int dealerNumber = 0;
+
+    dealerSum = dealerSum + dealerNumber;
     sum = sum + number;
 
     //results
@@ -70,12 +75,14 @@ int main()
     //Zero for using characters
     if(number == 0){
 
-      cout << character[random];
-      cout << simbol[random];
+      cout << "You got " << character[random] << simbol[random];
+      cout << "  ------------  " << "Dealer got " << character[dealerRandom] << simbol[dealerRandom];
 
        sum = sum + 10;
+       dealerSum = dealerSum + 10;
 
-       cout << "\nYou got " << sum << " points" << endl;
+       cout << "\nYou got " << sum << " points";
+       cout << "  ------------  " << " Dealer got " << dealerSum << " points" << endl;
        _cputs("\nPress E to grab another card or X to leave\n\n");
 
         key = getch();
