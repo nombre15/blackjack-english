@@ -11,7 +11,7 @@ int main()
 
     SetConsoleTitle("Blackjack");
 
-    repetir:
+    repeat:
     int sum = 0;
     int dealerSum = 0;
     int key;
@@ -37,14 +37,14 @@ int main()
     if(sum == 21) {
 
 
-        _cputs("21 cards,  Winner!! \n\nPress E to play again or X to leave\n\n");
+        _cputs("21 points,  Winner!! \n\nPress E to play again or X to leave\n\n");
 
         key = getch();
 
         if(key == 'e'){
 
             cout << "You have "  << money << "$\n" << endl;
-            goto repetir;
+            goto repeat;
         }
 
         else if(key == 'x'){
@@ -57,13 +57,15 @@ int main()
      if(sum > 21){
 
         sum = 0;
+        money = 0;
         _cputs("You have over 21 points, loser!\n\nPress E to play again or X to leave\n\n");
 
         key = getch();
 
         if(key == 'e'){
 
-            goto repetir;
+        cout << "Now you have " << money << "$\n" << endl;
+            goto repeat;
         }
 
         else if(key == 'x'){
@@ -84,7 +86,8 @@ int main()
 
         if(key == 'e'){
 
-            goto repetir;
+        cout << "Now you have " << money << "$\n" << endl;
+            goto repeat;
         }
 
         else if(key == 'x'){
@@ -97,13 +100,15 @@ int main()
      if(dealerSum > 21){
 
         sum = 0;
+        money = 0;
         _cputs("Winner!, dealer has over 21 points\n\nPress E to play again or X to leave\n\n");
 
         key = getch();
 
         if(key == 'e'){
 
-            goto repetir;
+        cout << "Now you have " << money << "$\n" << endl;
+            goto repeat;
         }
 
         else if(key == 'x'){
@@ -117,12 +122,21 @@ int main()
     //Zero for using characters
     if(number == 0){
 
-      cout << character[random] << simbol[random];
+      cout << "You: " << character[random] << simbol[random];
 
        sum = sum + 10;
 
-       cout << " You: got" << sum << " points";
+       cout << " -" << sum << " points";
     }
+
+    if(dealerNumber == 0){
+
+      cout << "\nDealer: " << character[dealerRandom] << simbol[dealerRandom];
+
+       dealerSum = dealerSum + 10;
+
+       cout << " - " << dealerSum << " points" << endl;
+     }
 
     //1 means try again
     if (number == 1) {
@@ -148,21 +162,13 @@ int main()
      cout << " - " << dealerSum << " points";
      }
 
-     if(dealerNumber == 0){
-
-      cout << "\nDealer: " << character[dealerRandom] << simbol[dealerRandom];
-
-       dealerSum = dealerSum + 10;
-
-       cout << " - " << dealerSum << " points" << endl;
-     }
-
        _cputs("\nPress E to grab another card or X to leave\n\n");
 
         key = getch();
 
         if(key == 'e'){
 
+            money = money + (money * 0.5);
             goto blackjack;
         }
 
