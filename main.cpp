@@ -129,15 +129,6 @@ int main()
        cout << " -" << sum << " points";
     }
 
-    if(dealerNumber == 0){
-
-      cout << "\nDealer: " << character[dealerRandom] << simbol[dealerRandom];
-
-       dealerSum = dealerSum + 10;
-
-       cout << " - " << dealerSum << " points" << endl;
-     }
-
     //1 means try again
     if (number == 1) {
 
@@ -160,6 +151,15 @@ int main()
 
      cout << "\nDealer: "<< dealerNumber << simbol[random];
      cout << " - " << dealerSum << " points";
+     }
+
+     if(dealerNumber == 0){
+
+      cout << "\nDealer: " << character[dealerRandom] << simbol[dealerRandom];
+
+       dealerSum = dealerSum + 10;
+
+       cout << " - " << dealerSum << " points" << endl;
      }
 
        _cputs("\nPress E to grab another card or X to leave\n\n");
