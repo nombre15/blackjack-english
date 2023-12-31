@@ -12,7 +12,7 @@ class carta
 
     private:
         string letter[4] {"A", "J", "Q", "K"};
-        string symbol[4] {" of diamonds", " of hearts", " of clubs", " of spades"}};
+        string symbol[4] {" of diamonds", " of hearts", " of clubs", " of spades"};
 };
 
 void playerWins(int& money, int& sum);
