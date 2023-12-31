@@ -2,6 +2,7 @@
 #include <time.h>
 #include <conio.h>
 #include <stdlib.h>
+#include <windows.h>
 #include "carta.h"
 using namespace std;
 
@@ -13,6 +14,8 @@ int main(){
 
 
     char key;
+    SetConsoleTitle("Blackjack");
+    
     //Game starts
     do{
 
