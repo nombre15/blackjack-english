@@ -15,8 +15,8 @@ class carta
         string symbol[4] {" of diamonds", " of hearts", " of clubs", " of spades"};
 };
 
-void playerWins(int& money, int& sum);
-void playerLoses(int& money, int& sum);
+void playerWins(int& money, int& playerSum);
+void playerLoses(int& money, int& playerSum);
 int enterKey(char key, int money);
 
 #endif // CARTA_H
