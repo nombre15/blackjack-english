@@ -6,17 +6,16 @@
 #include "carta.h"
 using namespace std;
 
-void playerWins(int& money, int& playerSum);
-void playerLoses(int& money, int& playerSum);
+void playerWins(int& money);
+void playerLoses(int& money);
 int enterKey(char key, int money);
 
 int main(){
 
-
     char key;
     SetConsoleTitle("Blackjack");
-    
-    //Game starts
+
+    // Beginning of the game
     do{
 
         system("cls");
@@ -39,21 +38,23 @@ int main(){
 
         cout << "\n";
 
-        //Take cards
+        // Take cards every round
         do{
 
             system("cls");
 
+            // If its not finished yet, play a round
             if(!isFinished){
 
                 blackjack.takeCards(playerSum, dealerSum);
                 blackjack.showResult(playerSum, dealerSum, money, key, isFinished);
             }
 
+            // If the game has finished
             else{
 
                 cout << "Your balance is $" << money << endl;
-                cout << "\nPress E to play again or X to abandon the game\n\n";
+                cout << "\nPress E to play again or X to abandon\n\n";
 
                 key = getch();
                 enterKey(key, money);
@@ -76,24 +77,34 @@ int main(){
     }while(key == 'e');
 }
 
-void playerWins(int& money, int& playerSum) {
+/** The player has won the game
+ *
+ * @param money Amount of money that will be increased
+*/
+void playerWins(int& money) {
 
     money = money + (money * 0.5);
     cout << "\nNow you have " << money << "$\n" << endl;
-    playerSum = 0;
 }
 
-void playerLoses(int& money, int& playerSum) {
+/** The player has lost the game
+ *
+ * @param money Amount of money that will be changed to 0, poor player :(
+*/
+void playerLoses(int& money) {
 
     cout << "\nYou lose it all!" << endl;
     money = 0;
-    playerSum = 0;
 }
 
+/** Function to enter a key
+ *
+ * @param key Value of the entered key
+ * @param money Amount of money that will be output if the player abandons
+*/
 int enterKey(char key, int money){
 
     while(key != 'e'){
-
         if(key == 'x'){
 
             system("cls");
@@ -103,8 +114,10 @@ int enterKey(char key, int money){
 
         else{
 
-        cout << "\nPlease enter a valid key\n\n";
+            cout << "\nPlease enter a valid key\n\n";
             key = getch();
         }
     }
+
+    // Intentional no return, as the function should never get here and there is no real value to return anyway
 }
