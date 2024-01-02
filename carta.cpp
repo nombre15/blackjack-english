@@ -23,7 +23,7 @@ void carta::takeCards(int& playerSum, int& dealerSum) {
     if (playerCardNumber == 0 || playerCardNumber == 1) {
 
         playerSum = playerSum + 10;
-        cout << "You: " << letter[playerCardSymbol] << symbol[playerCardSymbol] << " - " << playerSum << " points";
+        cout << "You: " << letter[dealerCardSymbol] << symbol[playerCardSymbol] << " - " << playerSum << " points";
     }
 
     // Regular numbers
@@ -42,7 +42,7 @@ void carta::takeCards(int& playerSum, int& dealerSum) {
     if (dealerCardNumber == 0 || dealerCardNumber == 1) {
 
         dealerSum = dealerSum + 10;
-        cout << "\nDealer: " << letter[dealerCardSymbol] << symbol[dealerCardSymbol] << " - " << dealerSum << " points";
+        cout << "\nDealer: " << letter[playerCardSymbol] << symbol[dealerCardSymbol] << " - " << dealerSum << " points";
     }
 }
 
