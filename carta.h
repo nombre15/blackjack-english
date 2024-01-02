@@ -7,16 +7,16 @@ class carta
 {
     public:
         Carta();
-        void takeCards(int& sum, int& dealerSum);
-        void showResult(int& sum, int& dealerSum, int& money, char& key, bool &isFinished);
+        void takeCards(int& playerSum, int& dealerSum);
+        void showResult(int playerSum, int dealerSum, int& money, char& key, bool &isFinished);
 
     private:
         string letter[4] {"A", "J", "Q", "K"};
         string symbol[4] {" of diamonds", " of hearts", " of clubs", " of spades"};
 };
 
-void playerWins(int& money, int& playerSum);
-void playerLoses(int& money, int& playerSum);
-int enterKey(char key, int money);
+//Methods from main that will be used in carta.cpp
+void playerWins(int& money);
+void playerLoses(int& money);
 
 #endif // CARTA_H
