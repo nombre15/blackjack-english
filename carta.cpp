@@ -1,9 +1,10 @@
 #include "carta.h"
+#include "players.h"
 #include <time.h>
 #include <conio.h>
-#include <stdlib.h>
 
-carta::Carta() {
+carta::carta() {
+
 }
 
 /**
@@ -70,13 +71,14 @@ void carta::takeCards(int& playerSum, int& dealerSum) {
 
 void carta::showResult(int playerSum, int dealerSum, int& money, char& key, bool& isFinished) {
 
+    players player;
     ////////RESULTS////////
 
     // 21 points PLAYER
     if (playerSum == 21) {
 
         cout << "\n\nYou have 21 points,  Winner!!";
-        playerWins(money);
+        player.playerWins(money);
         cout << "\nPress E to continue or X to abandon";
         key = getch();
         isFinished = true;
@@ -86,7 +88,7 @@ void carta::showResult(int playerSum, int dealerSum, int& money, char& key, bool
     else if (playerSum > 21) {
 
         cout << "\n\nYou have over 21 points, you lose!";
-        playerLoses(money);
+        player.playerLoses(money);
         cout << "\nPress E to continue or X to abandon";
         key = getch();
         isFinished = true;
@@ -96,7 +98,7 @@ void carta::showResult(int playerSum, int dealerSum, int& money, char& key, bool
     else if (dealerSum == 21) {
 
         cout << "\n\nThe dealer has 21 points, the dealer wins!";
-        playerLoses(money);
+        player.playerLoses(money);
         cout << "\nPress E to continue or X to abandon";
         key = getch();
         isFinished = true;
@@ -106,7 +108,7 @@ void carta::showResult(int playerSum, int dealerSum, int& money, char& key, bool
     else if (dealerSum > 21) {
 
         cout << "\n\nThe dealer has over 21 points, you win!";
-        playerWins(money);
+        player.playerWins(money);
         cout << "\nPress E to continue or X to abandon";
         key = getch();
         isFinished = true;
@@ -123,7 +125,7 @@ void carta::showResult(int playerSum, int dealerSum, int& money, char& key, bool
                 if (dealerSum > playerSum) {
 
                     cout << "\nThe dealer has more points, you lose";
-                    playerLoses(money);
+                    player.playerLoses(money);
                     cout << "You go away with" << money << "$\n";
                     return;
                 }
@@ -135,7 +137,7 @@ void carta::showResult(int playerSum, int dealerSum, int& money, char& key, bool
                 else {
 
                     cout << "\nYou have more points than the dealer, you win!" << endl;
-                    playerWins(money);
+                    player.playerWins(money);
                     return;
                 }
             }
