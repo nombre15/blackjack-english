@@ -25,7 +25,7 @@ int players::play(){
         cout << "Enter the amount of money you will bet"  << endl;
         cin >> money;
 
-        while(cin.fail() || money <= 0) {
+        while(cin.fail() || cin.peek() != '\n' || money <= 0) {
 
             cout << "Enter a valid number" << endl;
             cin.clear();
