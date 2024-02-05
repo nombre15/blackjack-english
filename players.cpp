@@ -25,13 +25,7 @@ int players::play(){
         cout << "Enter the amount of money you will bet"  << endl;
         cin >> money;
 
-        while(cin.fail() || cin.peek() != '\n' || money <= 0) {
-
-            cout << "Enter a valid number" << endl;
-            cin.clear();
-            cin.ignore(256,'\n');
-            cin >> money;
-        }
+        validateMoney(money);
 
         cout << "\n";
 
@@ -84,6 +78,16 @@ void players::playerLoses(int& money) {
 
     cout << "\nYou lose it all!" << endl;
     money = 0;
+}
+
+void validateMoney(int& money){
+
+    system("cls");
+    cout << "Enter a valid amount of money\n" << endl;
+    cin.clear();
+    cin.ignore(256,'\n');
+    cout << "$";
+    cin >> money;
 }
 
 int players::enterKey(char key, int money){
