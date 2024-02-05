@@ -5,6 +5,7 @@ class players
         int play();
         void playerWins(int& money);
         void playerLoses(int& money);
+        void validateMoney(int& money);
         int enterKey(char key, int money);
 
     private:
